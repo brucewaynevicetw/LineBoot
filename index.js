@@ -5,7 +5,7 @@ var path = require('path');
 var bot = linebot({
     channelId: '1578092539',
     channelSecret: '139bf2744c85557724b4057606420401',
-    channelAccessToken: '/st2B07Qjl17t28/By1Yt1EQ50nMP4g5YJe0xnq46WYWBK3XLtdUKV49dSr+VJqUniTZtryOHJh0zq4JPIe4TllMlFgqbGHVjqAEz84qen+OHEzGXh2wHHoZ6nAiX5meqd9DIBHQ573L4sD21YFBigdB04t89/1O/w1cDnyilFU='
+    channelAccessToken: 'xHTG9eBfo/ek26WZ3GXNcp5FtSxZ1wO7NgO/Z2P1r+DXpgNhiQsy1tow3oU5qChcniTZtryOHJh0zq4JPIe4TllMlFgqbGHVjqAEz84qen8rCI5TYz/7PMLGL2C2KbdS1vK7b5QncLrs4Jz79olgnwdB04t89/1O/w1cDnyilFU='
 });
  
 var message = {

@@ -11,16 +11,12 @@ var bot = linebot({
 var message = {
     "你好":"哈囉~需要甚麼服務?",
 	"請問":"有什麼我能幫忙你的？ 請打xxxxxxxx電話聯絡我",
-	"你是誰":"我是旅遊助手企毛"
+	"你是誰":"我是旅遊助手企毛",
 	"早安":"早阿~祝您有美好一天!",
 	"嗨":"哈囉~您好 ! ",
 };
  
-var message = {
-  "type": "sticker",
-  "packageId": "4",
-  "stickerId": "1"
-}
+
  
  
 bot.on('message', function (event) {

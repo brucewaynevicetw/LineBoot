@@ -15,7 +15,11 @@ var message = {
 	"早安":"早阿~祝您有美好一天!",
 	"嗨":"哈囉~您好 ! ",
 };
- 
+ var message = {
+  "type": "sticker",
+  "packageId": "4",
+  "stickerId": "1"
+}
 
  
  

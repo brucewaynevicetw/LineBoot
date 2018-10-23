@@ -1,6 +1,6 @@
 const firebase = require("firebase");
 
-const PROJECT_ID = "lineboot10-23>";
+const PROJECT_ID = "lineboot10-23";
 const API_KEY = "AIzaSyBFdwX49xe9wkJjroWvP0od6mwpnSC1TcI";
 
 firebase.initializeApp({

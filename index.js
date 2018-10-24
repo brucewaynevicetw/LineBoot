@@ -1,7 +1,4 @@
-var linebot = require('linebot');
-var express = require('express');
-var path = require('path');
- 
+
 
 bot.on('beacon', function (event) {
     console.log('beacon: ' + event.beacon.type);

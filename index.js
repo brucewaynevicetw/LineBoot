@@ -1,5 +1,5 @@
 var linebot = require('linebot');
-var express = require('express');
+
 var path = require('path');
  
 var bot = linebot({

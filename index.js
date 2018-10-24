@@ -52,7 +52,7 @@ bot.on('beacon', function (event) {
 });
 
 
-const app = express();
+//const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
  

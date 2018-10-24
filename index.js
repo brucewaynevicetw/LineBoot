@@ -52,7 +52,7 @@ bot.on('beacon', function (event) {
 });
 
 
-//const app = express();
+const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
  
@@ -61,7 +61,7 @@ var server = app.listen(process.env.PORT || 8080, function () {
     console.log("App now running on port", port);
 });
 
-const express = require('express');
+//const express = require('express');
 const bodyParser = require('body-parser');
 const fireBaseCollector = require('./FireBaseCollector.js');
 const path = require('path');

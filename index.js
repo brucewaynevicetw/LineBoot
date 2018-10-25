@@ -142,9 +142,10 @@ bot.on('beacon', function (event) {
 	
     // console.log(event.beacon.type + " - " + lineid);
     switch (event.beacon.type) {
-        case 'enter':
+		case 'enter':
             let user = fireBaseCollector.userEnter(lineid);
             // console.log("user : " + !!user);
+			 respone = '您目前位置所在是集合地點';
             if (user) {
                 if (!find(joinList, "LINEID", lineid)) {
                     let d = {LINEID: lineid, NAME: user.NAME, NUMBER: user.NUMBER, TIME: user.JOINTIME};
@@ -162,7 +163,8 @@ bot.on('beacon', function (event) {
             }
             break;
         case 'leave':
-            let data = find(unknowjoinList, "LINEID", lineid);
+            respone = '您已經脫隊了 ! 請盡快聯絡導遊';
+			let data = find(unknowjoinList, "LINEID", lineid);
             if (data) {
                 unknowjoinList.splice(data[1], 1);
             }
@@ -173,18 +175,12 @@ bot.on('beacon', function (event) {
             fireBaseCollector.userLeave(lineid);
             broadcast("online", {TYPE: "REMOVE", LINEID: lineid})
             break;
+			default:
+            respone = '我壞掉了';
+			
     }
 	
-	    switch(event.beacon.type){
-        case 'enter':
-               respone = '你進入教室';
-              break;
-        case 'leave':
-             respone = '你離開教室';
-             break;
-        default:
-             respone = '我壞掉了';
-     }
+ }
 	  bot.reply(event.replyToken, respone);
 	
 });

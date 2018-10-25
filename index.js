@@ -1,4 +1,3 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const fireBaseCollector = require('./FireBaseCollector.js');
@@ -11,6 +10,28 @@ const bot = require('linebot')({
     channelSecret: '139bf2744c85557724b4057606420401',
     channelAccessToken: 'xHTG9eBfo/ek26WZ3GXNcp5FtSxZ1wO7NgO/Z2P1r+DXpgNhiQsy1tow3oU5qChcniTZtryOHJh0zq4JPIe4TllMlFgqbGHVjqAEz84qen8rCI5TYz/7PMLGL2C2KbdS1vK7b5QncLrs4Jz79olgnwdB04t89/1O/w1cDnyilFU='
 });
+
+bot.on('beacon', function (event) {
+    console.log('beacon: ' + event.beacon.type);
+    var respone;
+    switch(event.beacon.type){
+        case 'enter':
+            respone = '您目前位置所在是集合地點';
+            break;
+        case 'leave':
+            respone = '您已經脫隊了 ! 請盡快聯絡導遊';
+            break;
+        default:
+            respone = '我壞掉了';
+    }
+    bot.reply(event.replyToken, respone);
+});
+
+
+
+
+
+
 
 bot.on('message', function (event) {
     let requestMessage = event.message.text;
@@ -162,12 +183,3 @@ bot.on('beacon', function (event) {
             break;
     }
 });
-
-function find(arr, s, v) {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i][s] === v) {
-            return [arr[i], i];
-        }
-    }
-    return null;
-}

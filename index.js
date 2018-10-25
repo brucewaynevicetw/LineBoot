@@ -175,12 +175,12 @@ bot.on('beacon', function (event) {
             fireBaseCollector.userLeave(lineid);
             broadcast("online", {TYPE: "REMOVE", LINEID: lineid})
             break;
-			default:
+		default:
             respone = '我壞掉了';
 			
     }
-	
+	bot.reply(event.replyToken, respone);
  }
-	  bot.reply(event.replyToken, respone);
+	  
 	
 });

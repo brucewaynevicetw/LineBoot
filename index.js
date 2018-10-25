@@ -13,7 +13,8 @@ const bot = require('linebot')({
 
 
 
-bot.on('message','beacon', function (event) {
+
+bot.on('message', function (event) {
     let requestMessage = event.message.text;
     if (requestMessage.indexOf("綁定") >= 0) {
         let bindId = requestMessage.replace("綁定", "");
@@ -126,8 +127,19 @@ function broadcast(channel, msg) {
 var joinList = [];
 var unknowjoinList = [];
 
+
+bot.on('message', function (event) {
+    console.log('message: ' + event.message.text);
+    var respone;
+   
+    console.log('message respone: ' + respone);
+    bot.reply(event.replyToken, respone);
+});
+
 bot.on('beacon', function (event) {
     let lineid = event.source.userId;
+	var respone;
+	
     // console.log(event.beacon.type + " - " + lineid);
     switch (event.beacon.type) {
         case 'enter':
@@ -162,4 +174,17 @@ bot.on('beacon', function (event) {
             broadcast("online", {TYPE: "REMOVE", LINEID: lineid})
             break;
     }
+	
+	    switch(event.beacon.type){
+        case 'enter':
+               respone = '你進入教室';
+              break;
+        case 'leave':
+             respone = '你離開教室';
+             break;
+        default:
+             respone = '我壞掉了';
+     }
+	  bot.reply(event.replyToken, respone);
+	
 });

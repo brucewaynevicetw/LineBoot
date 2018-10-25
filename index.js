@@ -13,12 +13,6 @@ const bot = require('linebot')({
 
 
 
-
-
-
-
-
-
 bot.on('message','beacon', function (event) {
     let requestMessage = event.message.text;
     if (requestMessage.indexOf("綁定") >= 0) {

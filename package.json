@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node index.js"
-  }
+  },
 
  
   "dependencies": {
@@ -13,7 +13,7 @@
     "linebot": "^1.4.1",
     "socket.io": "^2.1.1",
     "firebase": "^5.5.2"
-  },
+  }
  
 
 }

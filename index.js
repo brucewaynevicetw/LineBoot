@@ -11,9 +11,6 @@ const bot = require('linebot')({
     channelAccessToken: 'xHTG9eBfo/ek26WZ3GXNcp5FtSxZ1wO7NgO/Z2P1r+DXpgNhiQsy1tow3oU5qChcniTZtryOHJh0zq4JPIe4TllMlFgqbGHVjqAEz84qen8rCI5TYz/7PMLGL2C2KbdS1vK7b5QncLrs4Jz79olgnwdB04t89/1O/w1cDnyilFU='
 });
 
-
-
-
 bot.on('message', function (event) {
     let requestMessage = event.message.text;
     if (requestMessage.indexOf("綁定") >= 0) {
@@ -127,19 +124,13 @@ function broadcast(channel, msg) {
 var joinList = [];
 var unknowjoinList = [];
 
-
-
 bot.on('beacon', function (event) {
     let lineid = event.source.userId;
-	var respone;
-	console.log('beacon: ' + event.beacon.type);
-    
     // console.log(event.beacon.type + " - " + lineid);
     switch (event.beacon.type) {
-		case 'enter':
+        case 'enter':
             let user = fireBaseCollector.userEnter(lineid);
             // console.log("user : " + !!user);
-			 respone = '您目前位置所在是集合地點';
             if (user) {
                 if (!find(joinList, "LINEID", lineid)) {
                     let d = {LINEID: lineid, NAME: user.NAME, NUMBER: user.NUMBER, TIME: user.JOINTIME};
@@ -157,8 +148,7 @@ bot.on('beacon', function (event) {
             }
             break;
         case 'leave':
-            respone = '您已經脫隊了 ! 請盡快聯絡導遊';
-			let data = find(unknowjoinList, "LINEID", lineid);
+            let data = find(unknowjoinList, "LINEID", lineid);
             if (data) {
                 unknowjoinList.splice(data[1], 1);
             }
@@ -169,12 +159,14 @@ bot.on('beacon', function (event) {
             fireBaseCollector.userLeave(lineid);
             broadcast("online", {TYPE: "REMOVE", LINEID: lineid})
             break;
-		default:
-            respone = '我壞掉了';
-			
     }
-	bot.reply(event.replyToken, respone);
- }
-	  
-	
 });
+
+function find(arr, s, v) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i][s] === v) {
+            return [arr[i], i];
+        }
+    }
+    return null;
+}

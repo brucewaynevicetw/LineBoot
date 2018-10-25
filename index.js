@@ -14,7 +14,7 @@ const bot = require('linebot')({
 
 bot.on('beacon', function (event) {
     console.log('beacon: ' + event.beacon.type);
-    const respone;
+   var respone;
     switch(event.beacon.type){
         case 'enter':
                respone = '你進入教室';

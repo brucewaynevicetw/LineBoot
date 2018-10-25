@@ -13,30 +13,6 @@ const bot = require('linebot')({
 
 
 
-bot.on('beacon', function (event) {
-    console.log('beacon: ' + event.beacon.type);
-    var respone;
-    switch(event.beacon.type){
-        case 'enter':
-            respone = '您目前位置所在是集合地點';
-            break;
-        case 'leave':
-            respone = '您已經脫隊了 ! 請盡快聯絡導遊';
-            break;
-        default:
-            respone = '我壞掉了';
-    }
-    bot.reply(event.replyToken, respone);
-});
-
-const app = express();
-const linebotParser = bot.parser();
-app.post('/', linebotParser);
- 
-var server = app.listen(process.env.PORT || 8080, function () {
-    var port = server.address().port;
-    console.log("App now running on port", port);
-});
 
 
 

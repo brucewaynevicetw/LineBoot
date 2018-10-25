@@ -11,13 +11,50 @@ const bot = require('linebot')({
     channelAccessToken: 'xHTG9eBfo/ek26WZ3GXNcp5FtSxZ1wO7NgO/Z2P1r+DXpgNhiQsy1tow3oU5qChcniTZtryOHJh0zq4JPIe4TllMlFgqbGHVjqAEz84qen8rCI5TYz/7PMLGL2C2KbdS1vK7b5QncLrs4Jz79olgnwdB04t89/1O/w1cDnyilFU='
 });
 
-
-
-
-
-
-
 bot.on('message', function (event) {
+    var respone;
+    if(message[event.message.text]){
+        respone = message[event.message.text];
+		
+    }else{
+        respone = '我不懂你說的 「'+event.message.text+'」';
+    }
+    console.log(event.message.text + ' -> ' + respone);
+    bot.reply(event.replyToken, respone);
+});
+
+
+bot.on('beacon', function (event) {
+    console.log('beacon: ' + event.beacon.type);
+    var respone;
+    switch(event.beacon.type){
+        case 'enter':
+            respone = '您目前位置所在是集合地點';
+            break;
+        case 'leave':
+            respone = '您已經脫隊了 ! 請盡快聯絡導遊';
+            break;
+        default:
+            respone = '我壞掉了';
+    }
+    bot.reply(event.replyToken, respone);
+});
+
+
+const app = express();
+const linebotParser = bot.parser();
+app.post('/', linebotParser);
+ 
+var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+});
+
+
+
+
+
+bot.on('message','beacon', function (event) {
     let requestMessage = event.message.text;
     if (requestMessage.indexOf("綁定") >= 0) {
         let bindId = requestMessage.replace("綁定", "");

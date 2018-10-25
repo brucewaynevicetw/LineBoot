@@ -15,6 +15,7 @@ const bot = require('linebot')({
 
 
 bot.on('message', function (event) {
+	var respone;
     let requestMessage = event.message.text;
     if (requestMessage.indexOf("綁定") >= 0) {
         let bindId = requestMessage.replace("綁定", "");
@@ -49,6 +50,8 @@ bot.on('message', function (event) {
             bot.push(lineid, "我看不懂你說的[ " + requestMessage + " ]");
         }
     });
+	 console.log(event.message.text + ' -> ' + respone);
+    bot.reply(event.replyToken, respone);
 });
 
 const app = express();
@@ -128,13 +131,6 @@ var joinList = [];
 var unknowjoinList = [];
 
 
-bot.on('message', function (event) {
-    console.log('message: ' + event.message.text);
-    var respone;
-   
-    console.log('message respone: ' + respone);
-    bot.reply(event.replyToken, respone);
-});
 
 bot.on('beacon', function (event) {
     let lineid = event.source.userId;

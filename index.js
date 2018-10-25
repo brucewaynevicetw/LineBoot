@@ -15,7 +15,6 @@ const bot = require('linebot')({
 
 
 bot.on('message', function (event) {
-
     let requestMessage = event.message.text;
     if (requestMessage.indexOf("綁定") >= 0) {
         let bindId = requestMessage.replace("綁定", "");
@@ -50,8 +49,6 @@ bot.on('message', function (event) {
             bot.push(lineid, "我看不懂你說的[ " + requestMessage + " ]");
         }
     });
-	 console.log(event.message.text + ' -> ' + respone);
-    bot.reply(event.replyToken, respone);
 });
 
 const app = express();

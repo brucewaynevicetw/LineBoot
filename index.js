@@ -146,6 +146,7 @@ bot.on('beacon', function (event) {
                     })
                 }
             }
+            event.reply("您目前位置所在是集合地點");
             break;
         case 'leave':
             let data = find(unknowjoinList, "LINEID", lineid);
@@ -158,6 +159,7 @@ bot.on('beacon', function (event) {
             }
             fireBaseCollector.userLeave(lineid);
             broadcast("online", {TYPE: "REMOVE", LINEID: lineid})
+            event.reply("您已經脫隊了 ! 請盡快聯絡導遊");
             break;
     }
 });

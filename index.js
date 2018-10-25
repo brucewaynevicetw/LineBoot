@@ -15,7 +15,7 @@ const bot = require('linebot')({
 
 
 bot.on('message', function (event) {
-	var respone;
+
     let requestMessage = event.message.text;
     if (requestMessage.indexOf("綁定") >= 0) {
         let bindId = requestMessage.replace("綁定", "");

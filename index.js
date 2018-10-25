@@ -139,7 +139,8 @@ bot.on('message', function (event) {
 bot.on('beacon', function (event) {
     let lineid = event.source.userId;
 	var respone;
-	
+	console.log('beacon: ' + event.beacon.type);
+    
     // console.log(event.beacon.type + " - " + lineid);
     switch (event.beacon.type) {
 		case 'enter':

@@ -42,6 +42,7 @@ bot.on('message', function (event) {
     fireBaseCollector.getResponeMessage(requestMessage,function (respone) {
         if(respone){
             bot.push(lineid, respone);
+            fireBaseCollector.add(requestMessage,requestMessage,requestMessage);
         }else{
             bot.push(lineid, "我看不懂你說的[ " + requestMessage + " ]");
         }
